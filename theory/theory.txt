@@ -1,0 +1,23 @@
+Episode - 14 | NetflixGPT - Building the core
+
+- How can we use create-react-app to create our react project? Explain create-react-app briefly?
+A. First of all, write the command npx create-react-app netflix-gpt and this netflix-gpt is the name of the project. Now, it will take some time and it will install lot of packages for us and it will create a basic folder structure for us. So it uses webpack, jest, etc. so a lot of scaffolding things it already to it for us right. So that is why, lot of developers prefer to use these scafolds just like create-react-app with them right.
+
+- Which bundler does create-react-app uses behind the scene?
+A.Webpack is the bundler that create-react-app uses behind the scene.
+
+- Define Webpack?
+A. Webpack is also a bundler which does similar job like parcel.
+
+- Can we create react project using vite?
+A. Yes! We can create react project using vite.
+
+- How will we install tailwindcss after creating our react project using create-react-app?
+A. Go to tailwindcss website > click on get started > go to framework guides > click on create-react-app then it gives us the steps to setup tailwindcss into our create-react-app:
+I. First of all, we don't have to install the project because we already had a project so we've to skip this create your project step.
+II. We've to install tailwindcss using the command npm install -D tailwindcss and npx tailwindcss init so copy it and run it on terminal. So it will install two things that are tailwindcss and tailwind.config.js automagically.
+III. Now, tailwindcss website says we've to configure the paths right so the copy the config and then replace and paste it within already existing config in our project that is tailwind.config.js file.
+IV. Now, we just have to write three things in our index.css file so copy the code and paste it inside our project index.css file.
+V. And then, we just have to run our project and everything will work.
+
+So that's all the above setup we need for tailwindcss inside our create-react-app.
