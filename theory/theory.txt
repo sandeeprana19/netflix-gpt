@@ -13,7 +13,7 @@ A. Webpack is also a bundler which does similar job like parcel.
 A. Yes! We can create react project using vite.
 
 - How will we install tailwindcss after creating our react project using create-react-app?
-A. Go to tailwindcss website > click on get started > go to framework guides > click on create-react-app then it gives us the steps to setup tailwindcss into our create-react-app:
+A. Go to tailwindcss website > click on get started > go to f mework guides > click on create-react-app then it gives us the steps to setup tailwindcss into our create-react-app:
 I. First of all, we don't have to install the project because we already had a project so we've to skip this create your project step.
 II. We've to install tailwindcss using the command npm install -D tailwindcss and npx tailwindcss init so copy it and run it on terminal. So it will install two things that are tailwindcss and tailwind.config.js automagically.
 III. Now, tailwindcss website says we've to configure the paths right so the copy the config and then replace and paste it within already existing config in our project that is tailwind.config.js file.
