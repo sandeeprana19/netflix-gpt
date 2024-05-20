@@ -1,11 +1,76 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
+import { checkValidateData } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const fullName = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+  const navigate = useNavigate();
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
+  };
+
+  const handleButtonClicked = () => {
+    const message = checkValidateData(
+      fullName?.current?.value,
+      email.current.value,
+      password.current.value
+    );
+
+    setErrorMessage(message);
+
+    if (message) return;
+
+    if (!isSignInForm) {
+      // Sign up logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+
+          console.log(user);
+
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      // Sign in logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          setErrorMessage(errorCode + "" + errorMessage);
+        });
+    }
   };
 
   return (
@@ -18,30 +83,39 @@ const Login = () => {
         />
       </div>
       <form
+        onSubmit={(e) => e.preventDefault()}
         className="w-3/12 absolute p-12 left-0 right-0 mx-auto rounded-lg bg-black bg-opacity-80 text-white my-36"
-        autoComplete="off"
       >
         <h1 className="text-3xl font-bold py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignInForm && (
           <input
+            ref={fullName}
             type="text"
             placeholder="Full Name"
             className="w-full p-4 my-4 bg-gray-700"
           />
         )}
         <input
+          ref={email}
           type="text"
           placeholder="Email Address"
           className="w-full p-4 my-4 bg-gray-700"
         />
         <input
+          ref={password}
           type="password"
           placeholder="Password"
           className="w-full p-4 my-4 bg-gray-700"
         />
-        <button className="p-4 my-6 bg-red-700 rounded-lg w-full">
+        {errorMessage && (
+          <p className="text-red-500 text-lg font-bold py-2">{errorMessage}</p>
+        )}
+        <button
+          className="p-4 my-6 bg-red-700 rounded-lg w-full"
+          onClick={handleButtonClicked}
+        >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>

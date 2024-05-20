@@ -21,3 +21,16 @@ IV. Now, we just have to write three things in our index.css file so copy the co
 V. And then, we just have to run our project and everything will work.
 
 So that's all the above setup we need for tailwindcss inside our create-react-app.
+
+17/05/2024
+
+A. We can use the reference of those input boxes. Suppose if we want to find what is there in input box so we need a reference to an input box and that reference is created by react right using useRef hook
+
+- How will we use useRef?
+A. We can use const email = useRef() so this is how we write our useRef hook and now this useRef hook comes from react itself right and we'll give initial as null. And now we'll reference this email to our input box so we'll write ref={email} as prop of this input box.
+
+
+20/05/2024:
+
+- Why we need to use onAuthStateChanged api instead of dispatch action?
+A.The onAuthStateChanged api is called whenever the user sign in, sign up, sign out and whenever there is authentication state changed suppose we created a user and we sign in and we want to do something whenever there is auth changed so if we want to handle this auth changed thing then we've to use this onAuthStateChanged api so this is kind of like a eventListener so if the user sign in, sign up and sign out this onAuthStateChanged api will be called automatically.
