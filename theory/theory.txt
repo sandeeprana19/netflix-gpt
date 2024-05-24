@@ -34,3 +34,9 @@ A. We can use const email = useRef() so this is how we write our useRef hook and
 
 - Why we need to use onAuthStateChanged api instead of dispatch action?
 A.The onAuthStateChanged api is called whenever the user sign in, sign up, sign out and whenever there is authentication state changed suppose we created a user and we sign in and we want to do something whenever there is auth changed so if we want to handle this auth changed thing then we've to use this onAuthStateChanged api so this is kind of like a eventListener so if the user sign in, sign up and sign out this onAuthStateChanged api will be called automatically.
+
+- How to we unsubscribe from onAuthStateChanged?
+A. So basically, this onAuthStateChanged return an unsubscribe function and if we call this unsubscribe function then it will remove this onAuthStateChanged from our browser so we'll unsubscribe it when our header component unmount or unload.
+
+- What is the best practice to keep any hardcoded string like photoURL? And why?
+A. The best practice to keep any hardcoded string like photoURL in a constant file because see we've a netflix logo in one place right now so we've directly use it's url in header so what if we've netflix logo in footer also so we can copy paste it's url but suppose if we're using it's url in five or six places and tomorrow suppose netflix wants to update the logo so then we've to update netflix url everywhere wherever we've use it's url. That's why, so it is always a best practice to keep netflix logo url or any hardcoded string like photoURL in a constant file so that we update it one place and everywhere wherever we're using that constant netflix logo url will be change right and we can also use it anywhere we want to which will be coming only from one place.
