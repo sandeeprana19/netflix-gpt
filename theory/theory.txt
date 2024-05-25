@@ -38,5 +38,10 @@ A.The onAuthStateChanged api is called whenever the user sign in, sign up, sign 
 - How to we unsubscribe from onAuthStateChanged?
 A. So basically, this onAuthStateChanged return an unsubscribe function and if we call this unsubscribe function then it will remove this onAuthStateChanged from our browser so we'll unsubscribe it when our header component unmount or unload.
 
-- What is the best practice to keep any hardcoded string like photoURL? And why?
-A. The best practice to keep any hardcoded string like photoURL in a constant file because see we've a netflix logo in one place right now so we've directly use it's url in header so what if we've netflix logo in footer also so we can copy paste it's url but suppose if we're using it's url in five or six places and tomorrow suppose netflix wants to update the logo so then we've to update netflix url everywhere wherever we've use it's url. That's why, so it is always a best practice to keep netflix logo url or any hardcoded string like photoURL in a constant file so that we update it one place and everywhere wherever we're using that constant netflix logo url will be change right and we can also use it anywhere we want to which will be coming only from one place.
+Episode - 15 | NetflixGPT - Building the Core
+
+- How to register our app to TMDB?
+A. We can register our app to TMDB by following the steps like go to the TMDB website => then we've to login => then go to edit profile => then we've to go API => then it will ask you to register our app and once we register it we'll get api key and api react access token.
+
+- Why an api call happen twice or any other thing are also happening twice in our react application?
+A. When we created our react app using create-react-app so it gave us scaffolds of project right and it also wrapped our <App /> with <React.StrictMode></React.StrictMode> so if we'll remove this <React.StrictMode> right it will just call api onces. And if we'll keep <React.StrictMode> as it is also then api call with just happen twice in our local when we're developing our app but if we make a build for our production <React.StrictMode> will not make api call twice. So the reason behind <React.StrictMode> make api call twice or any other thing twice is react does extra rendering of our component to check some inconsistency between our calls and this only happens in development mode and it will throw an error if there is some inconsistency in our rendering cycle so it a good thing and it isn't a bad thing if it is happening twice.
