@@ -3,10 +3,10 @@ import { API_OPTIONS } from "../utils/constant";
 import { addTrailerVideo } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
-export const useMovieTrailer = async (movieId) => {
+export const useMovieVideos = async (movieId) => {
   const dispatch = useDispatch();
 
-  const getMovieTrailer = async () => {
+  const getMovieVideos = async () => {
     const data = await fetch(
       "https://api.themoviedb.org/3/movie/" + movieId + "/videos",
       API_OPTIONS
@@ -19,8 +19,8 @@ export const useMovieTrailer = async (movieId) => {
   };
 
   useEffect(() => {
-    getMovieTrailer();
+    getMovieVideos();
   }, []);
 };
 
-export default useMovieTrailer;
+export default useMovieVideos;
