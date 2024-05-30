@@ -8,9 +8,7 @@ import GptSearch from "./GptSearch";
 import { useSelector } from "react-redux";
 
 const Browse = () => {
-  const showGptSearchView = useSelector(
-    (store) => store.gpt?.showGptSearchView
-  );
+  const showGptSearch = useSelector((store) => store.gpt?.showGptSearch);
 
   useNowPlayingMovies();
   usePopularMovies();
@@ -18,7 +16,7 @@ const Browse = () => {
   return (
     <div>
       <Header />
-      {showGptSearchView ? (
+      {showGptSearch ? (
         <GptSearch />
       ) : (
         <>
