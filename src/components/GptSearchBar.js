@@ -28,7 +28,7 @@ const GptSearchBar = () => {
 
     // Make an API call to get movie results
     const getQuery =
-      "Act as a movies recommendation system and suggestion some movies for the query" +
+      "Act as a movies recommendation system and suggest some movies for the query : " +
       searchText.current.value +
       ". Only give me the names of 5 movies, comma separated like examples given ahead. Example: Gadar, Sholay, Golmaal, Koi Mil Gaya";
 
